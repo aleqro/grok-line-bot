@@ -1,0 +1,30 @@
+name: Bot6 - 海外サッカー情報（毎週月曜5時）
+
+on:
+  schedule:
+    - cron: '0 20 * * 0'  # 毎週月曜5時（JST）= 日曜20時（UTC）
+  workflow_dispatch:
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests xai-sdk
+    
+    - name: Run Bot6
+      env:
+        GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+        LINE_CHANNEL_ACCESS_TOKEN_6: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN_6 }}
+        LINE_USER_IDS_6: ${{ secrets.LINE_USER_IDS_6 }}
+      run: python bot6_soccer.py
