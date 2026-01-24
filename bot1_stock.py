@@ -60,6 +60,7 @@ def get_daily_questions():
 1. 銘柄名と株価
 2. おすすめ理由
 3. Xで話題になっている情報（過去1ヶ月）があれば含める
+4. Xの情報が正しいかは必ずWeb検索で確認してください
 
 {COMMON_INSTRUCTION}"""
     ]
