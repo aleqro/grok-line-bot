@@ -18,7 +18,7 @@ def ask_grok(question):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "grok-2-1212",
+        "model": "grok-4-1-fast-reasoning",
         "messages": [
             {
                 "role": "user",
