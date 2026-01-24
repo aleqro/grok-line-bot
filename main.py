@@ -50,11 +50,6 @@ def ask_grok(question):
                 "content": question
             }
         ],
-        "tools": [
-            {
-                "type": "web_search"
-            }
-        ],
         "stream": False,
         "temperature": 0.7
     }
