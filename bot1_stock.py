@@ -26,20 +26,19 @@ def get_today_date():
     return today.strftime("%Y年%m月%d日")
 
 def get_date_range():
-    """過去1ヶ月の日付範囲を取得（ISO8601形式）"""
+    """過去1ヶ月の日付範囲を取得（datetimeオブジェクト）"""
     jst = timezone(timedelta(hours=9))
     today = datetime.now(jst)
-    one_month_ago = today - timedelta(days=30)  # 30日前
+    one_month_ago = today - timedelta(days=30)
     
     return {
-        "from_date": one_month_ago.strftime("%Y-%m-%d"),
-        "to_date": today.strftime("%Y-%m-%d")
+        "from_date": one_month_ago,  # datetimeオブジェクトをそのまま返す
+        "to_date": today              # datetimeオブジェクトをそのまま返す
     }
 
 def get_daily_questions():
     """実行日を含む複数の質問を生成"""
     today = get_today_date()
-    date_range = get_date_range()
     
     base_questions = [
         f"""必ず最新の情報をWeb検索とX検索の両方で調べてください。
@@ -79,8 +78,8 @@ def ask_grok_with_search(question):
             tools=[
                 web_search(),  # Web検索を有効化
                 x_search(      # X検索を有効化（過去1ヶ月）
-                    from_date=date_range["from_date"],
-                    to_date=date_range["to_date"]
+                    from_date=date_range["from_date"],  # datetimeオブジェクト
+                    to_date=date_range["to_date"]        # datetimeオブジェクト
                 )
             ]
         )
@@ -118,7 +117,10 @@ def main():
     print(f"User IDs: {LINE_USER_IDS}")
     
     date_range = get_date_range()
-    print(f"X検索期間: {date_range['from_date']} 〜 {date_range['to_date']} (過去1ヶ月)")
+    # 表示用にフォーマット
+    from_date_str = date_range['from_date'].strftime("%Y-%m-%d")
+    to_date_str = date_range['to_date'].strftime("%Y-%m-%d")
+    print(f"X検索期間: {from_date_str} 〜 {to_date_str} (過去1ヶ月)")
     
     questions = get_daily_questions()
     
