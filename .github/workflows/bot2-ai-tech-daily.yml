@@ -1,8 +1,8 @@
-name: Bot2 - AI技術情報（毎朝5時）
+name: Bot2 - AI技術情報（毎週金曜5時）
 
 on:
   schedule:
-    - cron: '0 20 * * *'  # 毎朝5時（JST）= UTC 20時
+    - cron: '0 20 * * 4'  # 毎週金曜5時（JST）= 木曜20時（UTC）
   workflow_dispatch:
 
 jobs:
