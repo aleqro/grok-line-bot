@@ -1,0 +1,30 @@
+name: Bot2 - AI技術情報（毎朝5時）
+
+on:
+  schedule:
+    - cron: '0 20 * * *'  # 毎朝5時（JST）= UTC 20時
+  workflow_dispatch:
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests xai-sdk
+    
+    - name: Run Bot2
+      env:
+        GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+        LINE_CHANNEL_ACCESS_TOKEN_2: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN_2 }}
+        LINE_USER_IDS_2: ${{ secrets.LINE_USER_IDS_2 }}
+      run: python bot2_ai_tech.py
