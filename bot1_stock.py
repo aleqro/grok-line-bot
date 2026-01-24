@@ -13,6 +13,7 @@ COMMON_INSTRUCTION = """
   この回答はBot配信するのでやり取りは発生しないことを認識してください。
   注意事項は必要ありません。
   LINEで配信するため読みやすさを工夫してください。
+  必ず最新の情報を検索してください。
 """
 
 def get_today_date():
@@ -38,7 +39,7 @@ def ask_grok(question):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "grok-4-1-fast-non-reasoning",
+        "model": "grok-4-1-fast-reasoning",
         "messages": [{"role": "user", "content": question}],
         "stream": False,
         "temperature": 0.7
