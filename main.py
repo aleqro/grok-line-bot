@@ -29,7 +29,15 @@ def ask_grok(question):
         "temperature": 0.7
     }
     
+    print(f"リクエストURL: {url}")
+    print(f"モデル: {data['model']}")
+    
     response = requests.post(url, headers=headers, json=data)
+    
+    # ★ エラー詳細を出力
+    print(f"ステータスコード: {response.status_code}")
+    print(f"レスポンス内容: {response.text}")
+    
     response.raise_for_status()
     
     result = response.json()
