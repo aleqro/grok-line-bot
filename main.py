@@ -8,7 +8,7 @@ LINE_CHANNEL_ACCESS_TOKEN = os.environ.get('LINE_CHANNEL_ACCESS_TOKEN')
 LINE_USER_ID = os.environ.get('LINE_USER_ID')
 
 # 定型文の質問
-DAILY_QUESTION = "最新の日本株の動向とおすすめを教えてください。この回答はBot配信する予定なのでやり取りは発生しないことを認識してください。"
+DAILY_QUESTION = "2026/01/24時点の日本株の最新の動向と購入するべきおすすめの銘柄を教えてください。この回答はBot配信する予定なのでやり取りは発生しないことを認識してください。また注意事項は必要ありません。"
 
 def ask_grok(question):
     """Grok APIに質問を送信"""
