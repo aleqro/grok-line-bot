@@ -2,7 +2,7 @@ name: Bot1 - 日本株（平日朝5時）
 
 on:
   schedule:
-    - cron: '0 20 * * 1-5'  # 平日朝5時（JST）= UTC 20時 月〜金
+    - cron: '0 20 * * 1-5'  # 平日朝5時（JST）
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,8 @@ jobs:
         python-version: '3.10'
     
     - name: Install dependencies
-      run: pip install requests
+      run: |
+        pip install requests xai-sdk
     
     - name: Run Bot1
       env:
