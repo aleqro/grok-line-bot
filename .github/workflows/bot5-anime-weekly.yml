@@ -1,8 +1,8 @@
-name: Bot5 - アニメ情報（毎週金曜5時）
+name: Bot5 - アニメ情報（毎週金曜20時）
 
 on:
   schedule:
-    - cron: '0 20 * * 4'  # 毎週金曜5時（JST）= 木曜20時（UTC）
+    - cron: '0 11 * * 5'  # 毎週金曜20時（JST）= 金曜11時（UTC）
   workflow_dispatch:
 
 jobs:
