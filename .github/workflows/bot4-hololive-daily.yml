@@ -2,7 +2,7 @@ name: Bot4 - ホロライブ（毎朝5時）
 
 on:
   schedule:
-    - cron: '30 12 * * *'  # 毎朝5時（JST）= UTC 20時
+    - cron: '0 20 * * *'  # 毎朝5時（JST）= UTC 20時
   workflow_dispatch:
 
 jobs:
